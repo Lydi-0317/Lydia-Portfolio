@@ -37,16 +37,16 @@ export function HeroSection() {
   transition={{ duration: 0.6, delay: 0.2 }}
   className="mb-8 flex justify-center"
 >
-  <div className="relative h-40 w-40 overflow-hidden rounded-full border-4 border-primary/30 shadow-lg">
-    <Image
-      src="/profile.jpg"
-      alt="Lydia Dondapati"
-      width={160}
-      height={160}
-      className="object-cover"
-      priority
-    />
-  </div>
+  <div className="relative h-56 w-56 sm:h-64 sm:w-64 rounded-full overflow-hidden border-4 border-primary/40 shadow-xl">
+  <Image
+    src="/profile.jpg"
+    alt="Lydia Dondapati"
+    fill
+    sizes="(max-width: 768px) 224px, 256px"
+    className="object-cover"
+    priority
+  />
+</div>
 </motion.div>
         {/* Status Badge */}
         <motion.div
