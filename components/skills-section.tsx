@@ -308,7 +308,7 @@ export function SkillsSection() {
   if (categories.length === 0) return null;
 
   return (
-    <section id="skills" className="relative px-6 py-32">
+    <section id="skills" className="relative px-6 py-32 scroll-mt-24">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute right-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/5 blur-[120px]" />
       </div>

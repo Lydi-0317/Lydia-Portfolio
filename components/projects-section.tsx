@@ -203,7 +203,7 @@ export function ProjectsSection() {
   const otherProjects = projects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="relative px-6 py-32">
+    <section id="projects" className="relative px-6 py-32 scroll-mt-24">
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-0 top-1/3 h-96 w-96 rounded-full bg-primary/5 blur-[120px]" />

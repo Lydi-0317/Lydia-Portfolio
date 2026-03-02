@@ -52,7 +52,7 @@ export function ContactSection() {
   }
 }
   return (
-    <section id="contact" className="relative px-6 py-32">
+    <section id="contact" className="relative px-6 py-32 scroll-mt-24">
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/5 blur-[120px]" />
