@@ -4,6 +4,21 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
+const handleNavClick = (
+  e: React.MouseEvent<HTMLAnchorElement>,
+  id: string
+) => {
+  e.preventDefault();
+
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+};
+
 const navLinks = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
@@ -52,11 +67,9 @@ export function Navigation() {
             >
               <a
                 href={link.href}
-                onClick={() =>
-                  setIsMobileOpen(false)}
-                className="block text-base text-muted-foreground transition-colors hover:text-primary"
+                className="text-sm text-muted-foreground transition-colors hover:text-primary"
               >
-                {link.name}
+              {link.name}
               </a>
             </motion.li>
           ))}
@@ -106,13 +119,15 @@ export function Navigation() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 * i }}
                 >
-                  <a
-                    href={link.href}
-                    onClick={() => setIsMobileOpen(false)}
-                    className="block text-base text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    {link.name}
-                  </a>
+                <a
+                  href={link.href}
+                  onClick={(e) => {
+                  handleNavClick(e, link.href.replace("#", ""));
+                  setIsMobileOpen(false);
+                  }}
+                >
+                {link.name}
+                </a>
                 </motion.li>
               ))}
               <motion.li
