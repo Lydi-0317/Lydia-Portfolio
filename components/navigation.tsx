@@ -52,7 +52,9 @@ export function Navigation() {
             >
               <a
                 href={link.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                onClick={() =>
+                  setIsMobileOpen(false)}
+                className="block text-base text-muted-foreground transition-colors hover:text-primary"
               >
                 {link.name}
               </a>
@@ -65,6 +67,8 @@ export function Navigation() {
           >
             <a
               href="/Lydia_Resume.pdf"
+              onClick={() =>
+                  setIsMobileOpen(false)}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-lg border border-primary/30 bg-primary/10 px-4 py-2 text-sm text-primary transition-all hover:bg-primary/20"
@@ -117,7 +121,8 @@ export function Navigation() {
                 transition={{ delay: 0.3 }}
               >
                 <a
-                  href="/resume.pdf"
+                  href="/Lydia_Resume.pdf"
+                  onClick={() => setIsMobileOpen(false)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block rounded-lg border border-primary/30 bg-primary/10 px-4 py-2 text-sm text-primary"
