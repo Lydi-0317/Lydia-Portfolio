@@ -7,7 +7,7 @@ import Image from "next/image";
 const socialLinks = [
   { icon: Github, href: "https://github.com/Lydi-0317", label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/lydia-dondapati/", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:hello@alexchen.dev", label: "Email" },
+  { icon: Mail, href: "mailto:lydjohn17@gmail.com", label: "Email" },
 ];
 
 export function HeroSection() {
