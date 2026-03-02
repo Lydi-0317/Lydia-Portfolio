@@ -4,27 +4,38 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
+/* ---- Smooth Scroll Handler ---- */
 const handleNavClick = (
   e: React.MouseEvent<HTMLAnchorElement>,
-  id: string
+  id: string,
+  closeMenu?: () => void
 ) => {
   e.preventDefault();
 
   const element = document.getElementById(id);
+
   if (element) {
-    element.scrollIntoView({
+    const yOffset = -90; // navbar height offset
+    const y =
+      element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({
+      top: y,
       behavior: "smooth",
-      block: "start",
     });
   }
+
+  // close mobile menu if open
+  if (closeMenu) closeMenu();
 };
 
+/* ---- Navigation Links ---- */
 const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
+  { name: "About", href: "about" },
+  { name: "Skills", href: "skills" },
+  { name: "Projects", href: "projects" },
+  { name: "Experience", href: "experience" },
+  { name: "Contact", href: "contact" },
 ];
 
 export function Navigation() {
@@ -47,9 +58,12 @@ export function Navigation() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+
+        {/* LOGO */}
         <motion.a
           href="#home"
-          className="text-lg font-bold tracking-tight text-foreground"
+          onClick={(e) => handleNavClick(e, "home")}
+          className="text-lg font-bold tracking-tight text-foreground cursor-pointer"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -66,13 +80,16 @@ export function Navigation() {
               transition={{ delay: 0.1 * i, duration: 0.4 }}
             >
               <a
-                href={link.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                href={`#${link.href}`}
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="cursor-pointer text-sm text-muted-foreground transition-colors hover:text-primary"
               >
-              {link.name}
+                {link.name}
               </a>
             </motion.li>
           ))}
+
+          {/* Resume Button */}
           <motion.li
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -80,8 +97,6 @@ export function Navigation() {
           >
             <a
               href="/Lydia_Resume.pdf"
-              onClick={() =>
-                  setIsMobileOpen(false)}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-lg border border-primary/30 bg-primary/10 px-4 py-2 text-sm text-primary transition-all hover:bg-primary/20"
@@ -119,17 +134,21 @@ export function Navigation() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 * i }}
                 >
-                <a
-                  href={link.href}
-                  onClick={(e) => {
-                  handleNavClick(e, link.href.replace("#", ""));
-                  setIsMobileOpen(false);
-                  }}
-                >
-                {link.name}
-                </a>
+                  <a
+                    href={`#${link.href}`}
+                    onClick={(e) =>
+                      handleNavClick(e, link.href, () =>
+                        setIsMobileOpen(false)
+                      )
+                    }
+                    className="block text-base text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    {link.name}
+                  </a>
                 </motion.li>
               ))}
+
+              {/* Mobile Resume */}
               <motion.li
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -137,9 +156,9 @@ export function Navigation() {
               >
                 <a
                   href="/Lydia_Resume.pdf"
-                  onClick={() => setIsMobileOpen(false)}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => setIsMobileOpen(false)}
                   className="inline-block rounded-lg border border-primary/30 bg-primary/10 px-4 py-2 text-sm text-primary"
                 >
                   Resume

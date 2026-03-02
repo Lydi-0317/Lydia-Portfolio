@@ -12,7 +12,7 @@ const socialLinks = [
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-28">
+    <section id="home" className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-32">
       {/* Background Effects */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-primary/5 blur-[120px]" />
