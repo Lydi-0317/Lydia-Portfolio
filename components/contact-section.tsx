@@ -32,13 +32,25 @@ export function ContactSection() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  async function handleSubmit(e: React.FormEvent) {
+  e.preventDefault();
+
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formState),
+  });
+
+  if (res.ok) {
     setIsSubmitted(true);
     setFormState({ name: "", email: "", message: "" });
     setTimeout(() => setIsSubmitted(false), 4000);
+  } else {
+    alert("Failed to send message. Please try again.");
   }
-
+}
   return (
     <section id="contact" className="relative px-6 py-32">
       {/* Background glow */}
