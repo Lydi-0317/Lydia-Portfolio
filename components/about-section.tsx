@@ -24,7 +24,7 @@ const highlights = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="relative px-6 py-32 scroll-mt-24">
+    <section id="about" className="relative px-6 py-32 pt-32 scroll-mt-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           label="About"

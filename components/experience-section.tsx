@@ -18,7 +18,7 @@ const experiences = [
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="relative px-6 py-32 scroll-mt-24">
+    <section id="experience" className="relative px-6 py-32 pt-32 scroll-mt-24">
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-primary/5 blur-[120px]" />
